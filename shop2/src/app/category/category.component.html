@@ -1,0 +1,17 @@
+
+
+
+<div class="nav-scroller py-1 mb-2 ">
+    <nav class="nav d-flex justify-content-between">
+      <a *ngFor="let category of categories;" 
+      class="nav-item nav-link link-body-emphasis active"
+       [routerLink]="'/products/category/' + category.id"
+       >{{category.name}}</a>
+       <a  
+      class="nav-item nav-link link-body-emphasis active"
+       [routerLink]="'/products'"
+       >Tüm Ürünler</a>
+   
+    </nav>
+  </div>
+

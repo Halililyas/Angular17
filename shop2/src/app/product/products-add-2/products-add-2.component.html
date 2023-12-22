@@ -1,0 +1,47 @@
+<h3>Yeni Ürün Ekle - Reactive Forms</h3>
+<form [formGroup]="productsAddForms" (ngSubmit)="add()">
+    <div class="form-group">
+        <input type="text" id="name" name="name" formControlName="name" placeholder="Ürün Adı" class="form-control">
+        <div class="alert alert-danger"
+            *ngIf="productsAddForms.get('name')?.hasError('required')&&productsAddForms.get('name')?.dirty">Ürün Adı
+            Zorunludur</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" id="description" name="description" formControlName="description"
+            placeholder="Açıklama Alanı" class="form-control">
+        <div class="alert alert-danger"
+            *ngIf="productsAddForms.get('description')?.hasError('required')&&productsAddForms.get('description')?.dirty">
+            Açıklma Zorunludur</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" id="price" name="price" formControlName="price" placeholder="Fiyat Alanı"
+            class="form-control">
+        <div class="alert alert-danger"
+            *ngIf="productsAddForms.get('price')?.hasError('required')&&productsAddForms.get('price')?.dirty">
+            Fiyat Giriniz</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" id="imageUrl" name="imageUrl" formControlName="imageUrl" placeholder="imageUrl Alanı"
+            class="form-control">
+        <div class="alert alert-danger"
+            *ngIf="productsAddForms.get('imageUrl')?.hasError('required')&&productsAddForms.get('imageUrl')?.dirty">
+            imageUrl Giriniz</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <select class="form-control" formControlName="categoryId" required id="categoryId" name="categoryId">
+            <option *ngFor="let category of category" [value]="category.id">
+
+                {{category.name}}
+            </option>
+        </select>
+        <div class="alert alert-danger" *ngIf="productsAddForms.get('categoryId')?.hasError('required')&&productsAddForms.get('categoryId')?.touched"
+            >Lütfen Seçiniz</div>
+    </div>
+    <br><br><br>
+    <button type="submit" class="btn btn-primary" [disabled]="productsAddForms.invalid">Ürün Ekle </button>
+
+</form>
